@@ -1,41 +1,87 @@
-*{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+* {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
-body{
-    background-color: #d0dbe4;
-    padding: 4rem;
+body {
+  background-color: #d0dbe4;
+  padding: 4rem;
 }
-.main{
-    display: flex;
-    background-color: white;
-    border-radius: 20px;
-    box-shadow: 10px 10px 10px 0px #8aa6bc;
-    padding: 2rem;
-    justify-content: space-around;
+.main {
+  display: flex;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 10px 10px 10px 0px #8aa6bc;
+  padding: 2rem;
+  justify-content: space-around;
 }
-h1{
-    color: #447094;
+h1 {
+  color: #447094;
 }
 
+.squares-selector {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  color: #447094;
+}
+input {
+  padding: 0.5rem;
+  width: 4rem;
+  color: #8aa6bc;
+  border: 2px solid #447094;
+  border-radius: 5px;
+  margin-top: 1rem;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  opacity: 1;
+  color: #8aa6bc;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+}
+.color-buttons{
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+button{
+  padding: 1rem;
+  margin: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #8aa6bc;
+  color: white;
+  box-shadow: 3px 3px 3px #7394af;
+}
+
+button:hover{
+  background-color: #447094;
+  cursor: pointer;
+}
+button:active{
+  box-shadow:-3px -3px 2px #154c79 inset;
+}
 :root {
-    --grid-cols: 1;
-    --grid-rows: 1;
-  }
+  --grid-cols: 1;
+  --grid-rows: 1;
+}
+
+#grid-container {
+  border: solid #447094;
+  display: grid;
+  grid-gap: 0em;
+  grid-template-rows: repeat(var(--grid-rows), 1fr);
+  grid-template-columns: repeat(var(--grid-cols), 1fr);
   
-  #grid-container {
-    border:  solid  #447094;
-    display: grid;
-    grid-gap: 0em;
-    grid-template-rows: repeat(var(--grid-rows), 1fr);
-    grid-template-columns: repeat(var(--grid-cols), 1fr);
-  }
-  
-  .grid-item {
-    padding: 1em;
-    border: 1px solid #8aa6bc;
-    text-align: center;
-  }
-  .grid-item:hover{
-    cursor: pointer;
-  }
+}
+
+.grid-item {
+  border: 1px solid #8aa6bc;
+}
+
+.grid-item:hover {
+  cursor: pointer;
+}
