@@ -1,10 +1,7 @@
 const container = document.getElementById("grid-container");
 const gridContainerSize = 600;
 let isMouseDown = false;
-let currentColor = "black"; // Default color
-const sketchArea = document.querySelector("#grid-container");
-sketchArea.style.width = `${gridContainerSize}px`;
-sketchArea.style.height = `${gridContainerSize}px`;
+let currentColor = "white"; // Default color
 
 // Function to create grid rows and columns
 function makeRows(rows, cols) {
@@ -14,19 +11,21 @@ function makeRows(rows, cols) {
 
   for (let c = 0; c < rows * cols; c++) {
     let cell = document.createElement("div");
-    cell.style.width = `${gridContainerSize / makeRows(rows) - 2}px`;
-    cell.style.height = `${gridContainerSize / makeRows(cols) - 2}px`;
+    cell.style.width = `${gridContainerSize / cols - 2}px`; // Adjusted calculation
+    cell.style.height = `${gridContainerSize / rows - 2}px`; // Adjusted calculation
     cell.classList.add("grid-item");
-    container.appendChild(cell).className = "grid-item";
+    container.appendChild(cell);
   }
+
+  return rows; // Return the number of rows created
 }
 
 // Initialize grid
-makeRows(16, 16);
+const initialSize = makeRows(16, 16);
 
 // Function to handle mouse over event for coloring squares
 function handleColoring(e) {
-  if (isMouseDown) {
+  if (isMouseDown && e.target.classList.contains('grid-item')) {
     e.target.style.backgroundColor = currentColor;
   }
 }
@@ -47,10 +46,8 @@ container.addEventListener("mouseover", handleColoring);
 // Event listener for click to toggle color
 container.addEventListener("click", (e) => {
   if (e.target.style.backgroundColor === "white") {
-    e.target.style.backgroundColor = currentColor;
-  } else {
-    e.target.style.backgroundColor = "white";
-  }
+    e.target.style.backgroundColor = "black";
+  } 
 });
 
 // Event listener for squares selector input change
@@ -73,3 +70,15 @@ document
 document
   .getElementById("white")
   .addEventListener("click", () => changeColor("white"));
+
+// Event listener for mouse move to continue coloring
+document.addEventListener("mousemove", (e) => {
+  if (isMouseDown) {
+    handleColoring(e);
+  }
+});
+
+// Event listener for mouse up to stop coloring even when outside the drawing area
+document.addEventListener("mouseup", () => {
+  isMouseDown = false;
+});

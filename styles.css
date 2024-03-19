@@ -49,12 +49,13 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 button{
   padding: 1rem;
-  margin: 0.5rem;
+  margin:0.5rem  0.5rem 0.5rem 0;
   border: none;
   border-radius: 5px;
   background-color: #8aa6bc;
   color: white;
   box-shadow: 3px 3px 3px #7394af;
+  font-size: 1rem;
 }
 
 button:hover{
@@ -62,7 +63,7 @@ button:hover{
   cursor: pointer;
 }
 button:active{
-  box-shadow:-3px -3px 2px #154c79 inset;
+  box-shadow:-3px -3px  #154c79 inset;
 }
 :root {
   --grid-cols: 1;
@@ -72,7 +73,6 @@ button:active{
 #grid-container {
   border: solid #447094;
   display: grid;
-  grid-gap: 0em;
   grid-template-rows: repeat(var(--grid-rows), 1fr);
   grid-template-columns: repeat(var(--grid-cols), 1fr);
   
